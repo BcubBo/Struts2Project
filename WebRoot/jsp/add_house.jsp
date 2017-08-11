@@ -7,9 +7,9 @@ String path = request.getContextPath();
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>青鸟租房 - 发布信息</title>
+	<title>XX租房 - 发布信息</title>
 	<link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css" />
-	<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/jquery-3.2.1.js"></script>
 <style>
 br{
 	display:none;

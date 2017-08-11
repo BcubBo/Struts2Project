@@ -3,7 +3,7 @@
 <%
 String path = request.getContextPath();
 %>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 //登录
 function doLogin(type) {
