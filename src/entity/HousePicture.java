@@ -1,5 +1,4 @@
-package com.pb.entity;
-
+package entity;
 /**
  * HousePicture entity. @author MyEclipse Persistence Tools
  */

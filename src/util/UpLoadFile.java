@@ -1,5 +1,4 @@
-package com.pb.util;
-
+package util;
 import java.io.File;
 
 //import org.apache.struts2.ServletActionContext;

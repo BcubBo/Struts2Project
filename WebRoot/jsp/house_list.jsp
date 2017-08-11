@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html;charset=UTF-8" import="com.pb.util.Constant;"%>
+﻿<%@ page language="java" contentType="text/html;charset=UTF-8" import="util.Constant;"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();

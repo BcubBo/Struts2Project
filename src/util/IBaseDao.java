@@ -1,10 +1,9 @@
-package com.pb.base.dao;
-
+package util;
 import java.util.List;
 
 import org.hibernate.Session;
 
-import com.pb.util.Page;
+import dao.Page;
 
 public interface IBaseDao<T> {
 	public Session getSession();

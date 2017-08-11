@@ -1,8 +1,7 @@
-package com.pb.service;
-
+package service;
 import java.util.Map;
 
-import com.pb.entity.HouseUser;
+import entity.HouseUser;
 
 public interface IUserService {
 

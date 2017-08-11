@@ -1,12 +1,11 @@
-package com.pb.web.action;
-
+package util;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.pb.entity.HouseUser;
-import com.pb.util.HibernateSessionFactory;
+import entity.HouseUser;
+import util.HibernateSessionFactory;
 
 public class Test {
 	@SuppressWarnings("unchecked")

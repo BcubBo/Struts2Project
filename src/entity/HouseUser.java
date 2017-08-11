@@ -1,6 +1,4 @@
-package com.pb.entity;
-
-
+package entity;
 public class HouseUser implements java.io.Serializable {
 	private static final long serialVersionUID = -4357515988015534310L;
 

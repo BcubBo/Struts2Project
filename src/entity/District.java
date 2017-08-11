@@ -1,5 +1,4 @@
-package com.pb.entity;
-
+package entity;
 import java.util.HashSet;
 import java.util.Set;
 

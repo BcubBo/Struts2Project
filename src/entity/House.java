@@ -1,5 +1,4 @@
-package com.pb.entity;
-
+package entity;
 import java.util.Date;
 
 public class House implements java.io.Serializable {

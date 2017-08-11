@@ -1,4 +1,4 @@
-package com.pb.base.dao.impl;
+package daoIMPL;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.pb.base.dao.IBaseDao;
-import com.pb.util.HibernateSessionFactory;
-import com.pb.util.Page;
+import dao.IBaseDao;
+import util.HibernateSessionFactory;
+import util.Page;
 
 public class BaseDaoImpl<T> implements IBaseDao<T> {
 	private Log log = LogFactory.getLog(this.getClass());

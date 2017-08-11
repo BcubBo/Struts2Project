@@ -1,5 +1,4 @@
-package com.pb.entity;
-
+package entity;
 
 public class HouseType implements java.io.Serializable {
 	private static final long serialVersionUID = 7749380828170192278L;

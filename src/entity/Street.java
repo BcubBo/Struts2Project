@@ -1,5 +1,4 @@
-package com.pb.entity;
-
+package entity;
 public class Street implements java.io.Serializable {
 	private static final long serialVersionUID = -5426544502150380122L;
 

@@ -1,15 +1,14 @@
-package com.pb.service;
-
+package service;
 import java.util.List;
 import java.util.Map;
 
-import com.pb.entity.District;
-import com.pb.entity.House;
-import com.pb.entity.HousePicture;
-import com.pb.entity.HouseType;
-import com.pb.entity.Street;
-import com.pb.util.Page;
-import com.pb.util.UpLoadFile;
+import dao.Page;
+import entity.District;
+import entity.House;
+import entity.HousePicture;
+import entity.HouseType;
+import entity.Street;
+import util.UpLoadFile;
 
 public interface IHouseService {
 

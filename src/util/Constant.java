@@ -1,4 +1,4 @@
-package com.pb.util;
+package util;
 
 public abstract  class Constant {
 	
