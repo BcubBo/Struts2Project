@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.pb.entity.House" table="HOUSE" >
+    <class name="entity.House" table="HOUSE" >
         <id name="id" type="java.lang.Integer">
             <column name="ID" precision="9" scale="0" />
             <generator class="sequence" >
@@ -31,13 +31,13 @@
         <property name="contact" type="java.lang.String">
             <column name="CONTACT" length="100" />
         </property>
-        <many-to-one name="houseUser" class="com.pb.entity.HouseUser" fetch="select">
+        <many-to-one name="houseUser" class="entity.HouseUser" fetch="select">
             <column name="USER_ID" precision="9" scale="0" />
         </many-to-one>
-        <many-to-one name="houseType" class="com.pb.entity.HouseType" fetch="select">
+        <many-to-one name="houseType" class="entity.HouseType" fetch="select">
             <column name="TYPE_ID" precision="9" scale="0" />
         </many-to-one>
-        <many-to-one name="street" class="com.pb.entity.Street" fetch="select">
+        <many-to-one name="street" class="entity.Street" fetch="select">
             <column name="STREET_ID" precision="9" scale="0" />
         </many-to-one>
         
@@ -48,6 +48,6 @@
             <one-to-many class="com.pb.entity.HousePicture" />
         </set> 
         -->
-        <one-to-one name="picture" class="com.pb.entity.HousePicture" property-ref="houseId" cascade="all"  lazy="false"/>
+        <one-to-one name="picture" class="entity.HousePicture" property-ref="houseId" cascade="all"  lazy="false"/>
     </class>
 </hibernate-mapping>
