@@ -1,17 +1,17 @@
-<!-- Î´µÇÂ¼µ¯´° -->
+<!-- æœªç™»å½•å¼¹çª— -->
 <div id="loginDiv" style="display:none; border:4px solid #000;margin:0 auto;" >
 	<div >
-		<h3>&nbsp;Äú»¹Ã»ÓĞµÇÂ¼£¡</h3>
+		<h3>&nbsp;æ‚¨è¿˜æ²¡æœ‰ç™»å½•ï¼</h3>
 		<table>
 			<tr>
 				<td nowrap="nowrap">
-					<span>&nbsp;&nbsp;&nbsp;ÓÃ»§Ãû£º</span>
+					<span>&nbsp;&nbsp;&nbsp;ç”¨æˆ·åï¼š</span>
 					<s:textfield name="user.username" id="uName"  required="true" size="15"   theme="simple"/>
 				</td>
 			</tr>
 			<tr>
 				<td >
-					<span>&nbsp;&nbsp;&nbsp;ÃÜ&nbsp;&nbsp;&nbsp;Âë£º</span>
+					<span>&nbsp;&nbsp;&nbsp;å¯†&nbsp;&nbsp;&nbsp;ç ï¼š</span>
 					<s:password name="user.password" id="uPass" required="true"   size="15" theme="simple"/>
 				</td>
 			</tr>
@@ -19,44 +19,44 @@
 				<td align="center">
 					&nbsp;&nbsp;&nbsp;
 					<label class="ui-green">
-						<input type="button" name="loginButton" id="divLogin" value="µÇÂ¼" />
+						<input type="button" name="loginButton" id="divLogin" value="ç™»å½•" />
 					</label>&nbsp;
 					<label class="ui-green">
-						<input type='button' id="hiddenButton" value='È¡Ïû' />
+						<input type='button' id="hiddenButton" value='å–æ¶ˆ' />
 					</label>
 				</td>
 			</tr>
 		</table>
 	</div>
 </div>
-<!-- //Î´µÇÂ¼µ¯´° -->
+<!-- //æœªç™»å½•å¼¹çª— -->
 
 
-//Ê¹ÓÃµÄjavascript
+//ä½¿ç”¨çš„javascript
 
 $(document).ready(function(){
 		
 	$('#releaseButton').click(function(){
-		//ÅĞ¶Ïµ±Ç°ÓÃ»§ÊÇ·ñµÇÂ¼
-		if($('#loginButton').get(0) != null){//µ¯³öµÇÂ¼ÌáÊ¾¿ò
-			//ÏÔÊ¾µÇÂ¼ÌáÊ¾¿ò
+		//åˆ¤æ–­å½“å‰ç”¨æˆ·æ˜¯å¦ç™»å½•
+		if($('#loginButton').get(0) != null){//å¼¹å‡ºç™»å½•æç¤ºæ¡†
+			//æ˜¾ç¤ºç™»å½•æç¤ºæ¡†
 			$('#loginDiv').css('position','fixed').show();
-		}else{//Ö±½ÓÌø×ªµ½ÏÔÊ¾·¢²¼ĞÅÏ¢µÄAction
+		}else{//ç›´æ¥è·³è½¬åˆ°æ˜¾ç¤ºå‘å¸ƒä¿¡æ¯çš„Action
 			window.location.href="<%=path%>/house/gotoAddHouse.action";
 		}
 	});
 	
-	//Òş²ØµÇÂ¼ÌáÊ¾¿ò
+	//éšè—ç™»å½•æç¤ºæ¡†
 	$("#hiddenButton").click(function(){
 		$('#loginDiv').hide();
 	});
 	
-	//µÇÂ¼
+	//ç™»å½•
 	$("#divLogin").click(function(){
 		var username = $("#uName").val();
 		var password = $("#uPass").val();
 		if(username.length == 0 || password.length == 0 ){
-			$("#msg").html("ÇëÊäÈëÓÃ»§Ãû»òÃÜÂë");
+			$("#msg").html("è¯·è¾“å…¥ç”¨æˆ·åæˆ–å¯†ç ");
 			$("#msg").css("color","red");
 			
 			return false;
@@ -73,14 +73,14 @@ $(document).ready(function(){
 			data: params,
 			    success:function(data){
 			     if(data.msg == "true"){
-			     	window.location.href = "<%=path%>/house/gotoAddHouse";//¸ù¾İÊµ¼ÊÒµÎñĞŞ¸Ä
+			     	window.location.href = "<%=path%>/house/gotoAddHouse";//æ ¹æ®å®é™…ä¸šåŠ¡ä¿®æ”¹
 			    }else{
 			   		$("#msg").html(data.msg);
 			   		$("#msg").css("color","red");
 			    } 
 			},
 			error: function() { 
-				alert("ajaxÖ´ĞĞÊ§°Ü"); 
+				alert("ajaxæ‰§è¡Œå¤±è´¥"); 
 			}
 	    });
 	});
