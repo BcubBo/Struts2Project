@@ -39,7 +39,7 @@ String path = request.getContextPath();
 </script>
 
 <body>
-	<s:include value="header.jsp"></s:include>
+	<s:include value="/jsp/header.jsp"></s:include>
 	<div id="regLogin" class="wrap">
 		<div class="dialog">
 			<dl class="clearfix">

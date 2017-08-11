@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
-String path = request.getContextPath();
+	String path = request.getContextPath();
 %>
 <script type="text/javascript" src="<%=path%>/js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
@@ -40,7 +40,7 @@ function doLogin(type) {
 </script>
 
 <div id="header" class="wrap">
-	<div id="logo"><img src="<%=path%>/img/logo.gif" /></div>
+	<div id="logo"><img src="../images/logo.gif" /></div>
 	
 	<div >
 		<div id="msg" align="center">&nbsp;<br></div>
@@ -50,12 +50,12 @@ function doLogin(type) {
 		<form method="post" id="loginFrom" action="user!login.action">
 			<div id="topLoginDiv" style="display: inline">
 				用户名:&nbsp;<s:textfield name="user.name" id="loginName" required="true" size="15"/>
-				&nbsp;密&nbsp;&nbsp;码:&nbsp;<s:password name="user.password"  id="loginPassword" required="true"size="15"/>
+				&nbsp;密&nbsp;&nbsp;码:&nbsp;<s:password name="user.password"  id="loginPassword" required="true" size="15"/>
 				<label class="ui-green">
 					<input type="button" name="loginButton" id="loginButton"  value="登录" onclick="doLogin();" />
 				</label>
 				<label class="ui-green">
-					<input type='button' value='注册' onclick='document.location="<%=path%>/pages/register.jsp"'/>
+					<input type='button' value='注册' onclick='document.location="<%=path%>/jsp/register.jsp"'/>
 				</label>
 			</div>
 			<div style="display: inline">

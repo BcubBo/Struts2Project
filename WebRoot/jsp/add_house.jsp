@@ -84,7 +84,7 @@ br{
 </style>
 
 <body>
-	<s:include value="header.jsp"></s:include>
+	<s:include value="/Struts2Project/jsp/header.jsp"></s:include>
 	<div id="regLogin" class="wrap">
 		<div class="dialog">
 			<dl class="clearfix">
@@ -159,7 +159,7 @@ br{
 			 				<tr>
 				 				<td class="field">已上传图片</td>
 				 				<td  style="text-align: center">
-				 					<img onerror="this.src='<%=path %>/img/noimage.jpg'" width="90" height="60" alt="" src="<%=path %>/img/noimage.jpg"/>
+				 					<img onerror="this.src='<%=path %>/imges/noimage.jpg'" width="90" height="60" alt="" src="<%=path %>/img/noimage.jpg"/>
 				 				</td>
 				 			</tr>
 				 			 <tr>

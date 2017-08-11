@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html;charset=UTF-8" import="util.Constant;"%>
+﻿<%@ page language="java" contentType="text/html;charset=UTF-8" %>
+<%@page import="util.Constant" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -23,7 +24,7 @@ request.setAttribute("path", path);
 							<s:if test='picture.url!=null && picture.url !=""'>
 								<img src='<%=path%><s:property value="picture.url"/>' width="90" height="60" />
 							</s:if><s:else>
-								<img src="images/thumb_house.gif" />
+								<img src="Struts2Project/images/thumb_house.gif" />
 							</s:else>
 						</s:a>
 					</span>
@@ -61,5 +62,5 @@ request.setAttribute("path", path);
 		</table>
 	</s:div>
 	
-	<s:include value="page.jsp"></s:include>
+	<s:include value="/jsp/page.jsp"></s:include>
 </div>
