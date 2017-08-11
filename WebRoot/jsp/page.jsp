@@ -59,7 +59,7 @@
 				到第<s:textfield name="page.index" id="index" style="height: 14px;font-size: 14px" size="3"></s:textfield>页
 			</td>					
 			<td width="30" style="float: left">
-				<input type="image" src="<%=request.getContextPath()%>/imges/go<s:if test="null == page.list || page.list.size<1">2</s:if>.gif"/>
+				<input type="image" src="<%=request.getContextPath()%>/images/go<s:if test="null == page.list || page.list.size<1">2</s:if>.gif"/>
 			</td>
 		</tr>
 	</table>
