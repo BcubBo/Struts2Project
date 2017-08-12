@@ -20,7 +20,7 @@ String path = request.getContextPath();
 			//data:"user.name:"+name,
 			dataType: "json",
 			success: function(data) {
-				//alert(data);
+				alert(data);
 				if(data=='true'){
 					 if(tag=='submit'){
 						$("#formasdf").submit();
