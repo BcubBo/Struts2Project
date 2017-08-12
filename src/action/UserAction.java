@@ -20,11 +20,23 @@ public class UserAction extends BaseAction {
 	
 	
 	public String execute() {
+		logger.debug(user);
+		if(userService.doRegister(user)) {
+			logger.debug("注册成功");
+			return SUCCESS;			
+			
+			
+			
+		}else{
+			
+			logger.debug("注册失败");			
+			return INPUT;
+			
+		}
 		
 		
 		
-		
-		return SUCCESS;
+		//return SUCCESS;
 	}
 	
 	///////////

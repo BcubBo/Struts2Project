@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
-String path = request.getContextPath();
+	String path = request.getContextPath();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,12 +12,12 @@ String path = request.getContextPath();
 </head>
 <script type="text/javascript">
 	function validateName(tag){
-		var name = $("#name").attr('value');// 获取输入框信息
-		var url = '/user/validateName.action?user.username='+name;
-		//alert(url);
+		var name = $("#name").val();//attr('vName');// 获取输入框信息
+		var url = '../user/validateName.action?user.username='+name;
+		alert(name);
 		$.ajax({
 			url: url,
-			//data:"user.name:"+name,
+			data:"user.name:"+name,
 			dataType: "json",
 			success: function(data) {
 				alert(data);
@@ -51,7 +51,7 @@ String path = request.getContextPath();
 				<dd class="past">填写个人信息</dd>
 			</dl>
 			<div class="box">
-				<s:form action="../user/register" id="formasdf"  theme="simple" >
+				<s:form action="../user/register.action" id="formasdf"  theme="simple" >
 					<div class="infos">
 						<table>
 							<tr>

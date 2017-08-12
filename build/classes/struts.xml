@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Conifguration 2.3//EN" 
 	"D:\JARPack\struts2lib\struts-2.3.dtd">
 
 <struts>
