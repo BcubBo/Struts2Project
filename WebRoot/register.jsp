@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	function validateName(tag){
 		var name = $("#name").val();//attr('vName');// 获取输入框信息
-		var url = '/user/validateName.action?user.username='+name;
+		var url = 'user/validateName.action?user.username='+name;
 		alert(name);
 		$.ajax({
 			url: url,
