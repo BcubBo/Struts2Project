@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	function validateName(tag){
 		var name = $("#name").val();//attr('vName');// 获取输入框信息
-		var url = '../user/validateName.action?user.username='+name;
+		var url = '/user/validateName.action?user.username='+name;
 		alert(name);
 		$.ajax({
 			url: url,
@@ -43,7 +43,7 @@
 </script>
 
 <body>
-	<s:include value="/jsp/header.jsp"></s:include>
+	<s:include value="/header.jsp"></s:include>
 	<div id="regLogin" class="wrap">
 		<div class="dialog">
 			<dl class="clearfix">
@@ -51,7 +51,7 @@
 				<dd class="past">填写个人信息</dd>
 			</dl>
 			<div class="box">
-				<s:form action="user/register.action" id="formasdf"  theme="simple" >
+				<s:form action="Struts2Project/user/register.action" id="formasdf"  theme="simple" >
 					<div class="infos">
 						<table>
 							<tr>
