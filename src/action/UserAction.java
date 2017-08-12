@@ -80,7 +80,7 @@ public class UserAction extends BaseAction {
 		if(!checkResult) {
 			
 			
-			this.checkMsg = "用户已经存在";
+			this.checkMsg = "用户不存在";
 			
 			
 			

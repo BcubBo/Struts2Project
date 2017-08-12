@@ -14,10 +14,10 @@
 	function validateName(tag){
 		var name = $("#name").val();//attr('vName');// 获取输入框信息
 		var url = 'user/validateName.action?user.username='+name;
-		alert(name);
+		//alert(name);
 		$.ajax({
 			url: url,
-			data:"user.username:"+name,//所有的属性的命名必须和pojo中的一一对应
+			//data:"user.username:"+name,//所有的属性的命名必须和pojo中的一一对应
 			dataType: "json",
 			success: function(data) {
 				alert(data);

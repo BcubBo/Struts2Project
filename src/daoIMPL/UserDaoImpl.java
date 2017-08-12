@@ -14,7 +14,7 @@ public class UserDaoImpl extends BaseDaoImpl<HouseUser> {
 	@Override
 	public Session getSession() {
 		
-		return this.getSession();
+		return super.getSession();
 		//获取会话
 		
 		

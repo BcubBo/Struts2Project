@@ -7,8 +7,8 @@
 
 <package name="user" namespace="/user" extends="default">
 		<action name="register" class="action.UserAction" method="register">
-			<result>/jsp/manage.jsp</result>
-			<result name="input">/jsp/register.jsp</result>
+			<result>/manage.jsp</result>
+			<result name="input">/register.jsp</result>
 		</action>
 		<action name="validateName" class="action.UserAction" method="check">
 			<result type="json">

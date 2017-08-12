@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,7 +19,7 @@ import util.Page;
 public class BaseDaoImpl<T> implements IBaseDao<T> {
 	private Log log = LogFactory.getLog(this.getClass());
 	private Class<T> entityClass;
-
+	Logger logger = (Logger)LogManager.getLogger();
     @SuppressWarnings("unchecked")
     public BaseDaoImpl() {
     	entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
@@ -50,7 +52,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@Override
 	public void delete(T instance) {
 		log.debug("deleting "+instance+" instance");
-		Transaction tx = getSession().beginTransaction();
+		Transaction tx = this.getSession().beginTransaction();
 		try {
 			getSession().delete(instance);
 			tx.commit();
@@ -66,7 +68,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@Override
 	public void update(T instance) {
 		log.debug("updating "+instance+" instance");
-		Transaction tx = getSession().beginTransaction();
+		Transaction tx = this.getSession().beginTransaction();
 		try {
 			getSession().update(instance);
 			tx.commit();
@@ -86,7 +88,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		log.debug("getting "+clazz+" instance with id: " + id);
 		try {
 			//Hibernate.initialize(District.class);
-			Object o = getSession().get(clazz,id);
+			Object o = this.getSession().get(clazz,id);
 			return o;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -102,7 +104,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		log.debug("getting "+entityClass+" List All ");
 		try {
 			String hql = "FROM "+entityClass;
-			Query queryObject = getSession().createQuery(hql);
+			Query queryObject = this.getSession().createQuery(hql);
 			
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -120,7 +122,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		try {
 			String c = clazz.toString();
 			String hql = "FROM "+c.substring(c.lastIndexOf(".")+1,c.length());
-			Query queryObject = getSession().createQuery(hql);
+			Query queryObject = this.getSession().createQuery(hql);
 			
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -144,7 +146,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		
 		try {
 			String hql = "FROM "+className+" as o WHERE o."+propertyName+" = ?";
-			Query queryObject = getSession().createQuery(hql);
+			Query queryObject = this.getSession().createQuery(hql);
 			queryObject.setParameter(0, value);
 			
 			return queryObject.list();
@@ -164,8 +166,11 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@SuppressWarnings("rawtypes")
 	public List findByHql(String hql) {
 		log.debug(hql);
+		logger.debug(hql);
+		
 		try {
-			Query queryObject = getSession().createQuery(hql);
+			logger.debug("进入查询语句前端");
+			Query queryObject = this.getSession().createQuery(hql);
 			
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -191,7 +196,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		Integer totalPage = 0;
 		try {
 			//1、根据hql语句查询指定数据
-			Query qList = getSession().createQuery(hql);
+			Query qList = this.getSession().createQuery(hql);
 			qList.setFirstResult(page * pageSize);
 			qList.setMaxResults(pageSize);
 		    list = qList.list();
@@ -225,7 +230,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		try {
 			if(page !=null){
 				//1、根据hql语句查询指定数据
-				Query qList = getSession().createQuery(hql);
+				Query qList = this.getSession().createQuery(hql);
 				qList.setFirstResult(page.getStartRow());
 				qList.setMaxResults(page.getSize());
 			    page.setList(qList.list());//将数据集合保存到page对象
