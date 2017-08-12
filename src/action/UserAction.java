@@ -1,5 +1,7 @@
 package action;
 
+import java.util.Map;
+
 import entity.HouseUser;
 import service.IUserService;
 import serviceIMPL.IUserServiceImpl;
@@ -95,8 +97,20 @@ public class UserAction extends BaseAction {
 	 * 
 	 * */
 	public String login() {
-		
-		userService.login(user);//
+		logger.debug("进入登陆验证模块");
+		Map<String,Object> resultMap = userService.login(user);//
+		//接收结果映射
+		if((boolean)resultMap.get("loginResult")){
+			user = (HouseUser)resultMap.get("user");
+			
+			logger.debug("已经获取用户信息");
+		}else {
+			
+			user = null;
+			//不存在赋空
+			
+			
+		}
 		
 		return SUCCESS;
 		

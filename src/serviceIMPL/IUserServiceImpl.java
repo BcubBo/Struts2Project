@@ -1,5 +1,7 @@
 package serviceIMPL;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +12,7 @@ import daoIMPL.UserDaoImpl;
 import entity.HouseUser;
 import service.IUserService;
 
+
 public class IUserServiceImpl implements IUserService{
 
 	//属性部分
@@ -17,12 +20,34 @@ public class IUserServiceImpl implements IUserService{
 	
 	Logger logger = (Logger)LogManager.getLogger();
 	
+	/**
+	 * 返回结果map成功的结果
+	 * @author BcubBo
+	 *@return Map<String,Object>
+	 */
 	
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> login(HouseUser user) {
+		logger.debug("开始执行登陆Service");
 		
-		return null;
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		
+		boolean loginResult = false;
+		List<HouseUser> userResultList = userDao.findByHql("from HouseUser h where h.username='"+
+						user.getUsername()+
+						"' and h.password='"+user.getPassword()+"'");
+		logger.debug("用户返回列表的长度为:"+userResultList.size());
+		//
+		if(userResultList.size()==0) {
+			loginResult = true;
+			resultMap.put("loginResult",loginResult);//添加登陆结果
+			resultMap.put("user", userResultList.get(0));//添加登陆用户信息
+			logger.debug("已添加完毕信息到返回集合中");
+			//
+		}
+		
+		return resultMap;
 	}
 
 	@Override
