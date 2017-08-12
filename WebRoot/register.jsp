@@ -9,6 +9,7 @@
 	<title>XX租房 - 用户注册</title>
 	<link type="text/css" rel="stylesheet" href="<%=path%>/css/style.css" />
 	<script type="text/javascript" src="<%=path%>/js/jquery-3.2.1.js"></script>
+	<meta content="charset">
 </head>
 <script type="text/javascript">
 	function validateName(tag){
@@ -20,14 +21,17 @@
 			//data:"user.username:"+name,//所有的属性的命名必须和pojo中的一一对应
 			dataType: "json",
 			success: function(data) {
-				var result = data.checkResult;
-				alert(data.checkResult);
-				if(result=='false'){
+				
+				//alert(data.checkResult);
+				if(!data.checkResult){
+					//小心布尔值的问题
+					
 					if(tag=='submit'){
+						alert("进入提交方法前");
 						$("#formasdf").submit();
 					}else{ 
 						$("#validateName").html("用户名可以使用");
-						$("#validateName").css("color","green");
+						$("#validateName").css("color","yellowgreen");
 					}
 				}else{
 					$("#validateName").html("用户名已存在");
@@ -52,7 +56,7 @@
 				<dd class="past">填写个人信息</dd>
 			</dl>
 			<div class="box">
-				<s:form action="Struts2Project/user/register.action" id="formasdf"  theme="simple" >
+				<s:form action="user/register.action" id="formasdf"  theme="simple" >
 					<div class="infos">
 						<table>
 							<tr>
@@ -87,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-
+	<s:debug/>
 	<s:include value="footer.jsp"></s:include>
 </body>
 </html>

@@ -40,7 +40,7 @@ function doLogin(type) {
 </script>
 
 <div id="header" class="wrap">
-	<div id="logo"><img src="images/logo.gif" /></div>
+	<div id="logo"><img src="<%=path%>/images/logo.gif" /></div>
 	
 	<div >
 		<div id="msg" align="center">&nbsp;<br></div>

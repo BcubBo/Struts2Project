@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" import="java.util.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
+<!DOCTYPE form PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
 <form name="pageForm" id="pageForm" method="get" action="">
 	<div align="center">
 	<table >
@@ -74,4 +77,6 @@
 		}
 	%>
 </form>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/function.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/function.js"></script>
+</html>

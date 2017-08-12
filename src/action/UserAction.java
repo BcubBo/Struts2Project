@@ -15,10 +15,11 @@ public class UserAction extends BaseAction {
 	
 	private IUserService userService = new IUserServiceImpl();
 	private HouseUser user;
-	private boolean checkResult;//检查结果
+	private boolean checkResult;//检查结果setter和getter然后直接返回了这个对象所以可以从中取得对象，且对象是以json格式返回
 	private String checkMsg;//检查失败后怎样
+	private String testString ;
 	
-	
+
 	public String execute() {
 		logger.debug(user);
 		if(userService.doRegister(user)) {
@@ -78,14 +79,9 @@ public class UserAction extends BaseAction {
 		
 		checkResult = userService.validate(user.getUsername());
 		if(!checkResult) {
-			
-			
 			this.checkMsg = "用户不存在";
-			
-			
-			
 		}
-		
+		testString = "testSting测试JSON格式放回的条件";
 		return SUCCESS;
 		
 	}
@@ -107,6 +103,13 @@ public class UserAction extends BaseAction {
 	
 	
 
+	public String getTestString() {
+		return testString;
+	}
+
+	public void setTestString(String testString) {
+		this.testString = testString;
+	}
 
 
 	public boolean isCheckResult() {
