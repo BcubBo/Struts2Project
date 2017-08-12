@@ -20,9 +20,10 @@
 			//data:"user.username:"+name,//所有的属性的命名必须和pojo中的一一对应
 			dataType: "json",
 			success: function(data) {
-				alert(data);
-				if(data=='true'){
-					 if(tag=='submit'){
+				var result = data.checkResult;
+				alert(data.checkResult);
+				if(result=='false'){
+					if(tag=='submit'){
 						$("#formasdf").submit();
 					}else{ 
 						$("#validateName").html("用户名可以使用");
