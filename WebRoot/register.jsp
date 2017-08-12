@@ -51,7 +51,7 @@
 				<dd class="past">填写个人信息</dd>
 			</dl>
 			<div class="box">
-				<s:form action="../user/register.action" id="formasdf"  theme="simple" >
+				<s:form action="user/register.action" id="formasdf"  theme="simple" >
 					<div class="infos">
 						<table>
 							<tr>
