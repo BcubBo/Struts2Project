@@ -47,7 +47,7 @@ function doLogin(type) {
 	</div>
 
 	<div align="right">
-		<form method="post" id="loginFrom" action="user!login.action">
+		<form method="post" id="loginFrom" action="${pageContext.request.ContextPath }/user/login.action">
 			<div id="topLoginDiv" style="display: inline">
 				用户名:&nbsp;<s:textfield name="user.name" id="loginName" required="true" size="15"/>
 				&nbsp;密&nbsp;&nbsp;码:&nbsp;<s:password name="user.password"  id="loginPassword" required="true" size="15"/>

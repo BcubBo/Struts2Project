@@ -85,6 +85,23 @@ public class UserAction extends BaseAction {
 		return SUCCESS;
 		
 	}
+	//////////
+	
+	/**
+	 * 用户登陆
+	 * @author BcubBo
+	 * @return String ---SUCCESS/INPUT/ERROR
+	 * 
+	 * 
+	 * */
+	public String login() {
+		
+		userService.login(user);//
+		
+		return SUCCESS;
+		
+		
+	}
 	
 	
 	
