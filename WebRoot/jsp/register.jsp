@@ -13,7 +13,7 @@ String path = request.getContextPath();
 <script type="text/javascript">
 	function validateName(tag){
 		var name = $("#name").attr('value');// 获取输入框信息
-		var url = '../user/validateName.action?user.username='+name;
+		var url = '/user/validateName.action?user.username='+name;
 		//alert(url);
 		$.ajax({
 			url: url,
@@ -33,7 +33,11 @@ String path = request.getContextPath();
 					$("#validateName").css("color","red");
 				} 
 			}
-		});
+
+
+
+		
+		});//结尾
 		
 	}
 </script>

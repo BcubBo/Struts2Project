@@ -5,15 +5,16 @@ import java.util.List;
 import org.hibernate.Session;
 
 import dao.IBaseDao;
+import entity.HouseUser;
 import util.HibernateSessionFactory;
 import util.Page;
 
-public class UserDaoImpl implements IBaseDao {
+public class UserDaoImpl extends BaseDaoImpl<HouseUser> {
 
 	@Override
 	public Session getSession() {
 		
-		return HibernateSessionFactory.getSession();
+		return this.getSession();
 		//获取会话
 		
 		
@@ -25,26 +26,11 @@ public class UserDaoImpl implements IBaseDao {
 
 
 	}
+///////////////////////////
 
-	@Override
-	public void save(Object instances) {
-		
 
-	}
 
-	@Override
-	public void delete(Object instances) {
-		
-
-	}
-
-	@Override
-	public void update(Object instances) {
-		
-
-	}
-
-	@Override
+/*	@Override
 	public Object findById(Class clazz, Integer id) {
 		
 		return null;
@@ -84,6 +70,6 @@ public class UserDaoImpl implements IBaseDao {
 	public Page findPageByHql(String hql, String hqlCount, Page page) {
 		
 		return null;
-	}
+	}*/
 
 }

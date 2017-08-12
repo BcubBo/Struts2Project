@@ -15,6 +15,9 @@ public class UserAction extends BaseAction {
 	
 	private IUserService userService = new IUserServiceImpl();
 	private HouseUser user;
+	private boolean checkResult;//检查结果
+	private String checkMsg;//检查失败后怎样
+	
 	
 	public String execute() {
 		
@@ -50,6 +53,64 @@ public class UserAction extends BaseAction {
 
 		
 		
+	}
+	//////
+	/**
+	 * 验证用户名
+	 * @author BcubBo
+	 * @return String--checkResult --checkMsg
+	 * 
+	 * 
+	 * */
+	public String check() {
+		
+		checkResult = userService.validate(user.getUsername());
+		if(!checkResult) {
+			
+			
+			this.checkMsg = "用户已经存在";
+			
+			
+			
+		}
+		
+		return SUCCESS;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	public boolean isCheckResult() {
+		return checkResult;
+	}
+
+	public void setCheckResult(boolean checkResult) {
+		this.checkResult = checkResult;
+	}
+
+	public String getCheckMsg() {
+		return checkMsg;
+	}
+
+	public void setCheckMsg(String checkMsg) {
+		this.checkMsg = checkMsg;
 	}
 
 	public IUserService getUserService() {
