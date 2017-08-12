@@ -81,7 +81,7 @@ public class UserAction extends BaseAction {
 		if(!checkResult) {
 			this.checkMsg = "用户不存在";
 		}
-		testString = "testSting测试JSON格式放回的条件";
+		testString = "testSting测试JSON格式返回的条件";
 		return SUCCESS;
 		
 	}

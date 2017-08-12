@@ -12,7 +12,7 @@
 		</action>
 		<action name="validateName" class="action.UserAction" method="check">
 			<result type="json">
-				<param name="includeProperties">checkResult,checkMsg</param>
+				<param name="includeProperties">checkResult,checkMsg,testString</param>
 			</result>
 		
 		</action>
