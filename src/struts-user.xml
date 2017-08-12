@@ -6,7 +6,11 @@
 <struts>
 
 <package name="user" namespace="/user" extends="default">
+		<action name="register" class="aciton.UserAction" method="register">
 		
+			<result>/jsp/manage.jsp</result>
+			<result name="input">/jsp/register.jsp</result>
+		</action>
 </package>
  
 </struts>

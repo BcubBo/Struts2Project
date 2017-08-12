@@ -2,6 +2,8 @@ package action;
 
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -12,7 +14,8 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 	private static final long serialVersionUID = 6735419554782593786L;
 	public Map<String, Object> session;
 	public Map<String, Object> request;
-	
+	protected Logger logger  = (Logger)LogManager.getLogger();
+	//logger对象
 	public Page page;		//分页对象
 	
 	/////////////////////////////////////////////////////////////////////
