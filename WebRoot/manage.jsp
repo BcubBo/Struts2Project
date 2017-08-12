@@ -11,9 +11,9 @@ String path = request.getContextPath();
 	<script type="text/javascript" src="<%=path%>/js/jquery-3.2.1.js"></script>
 </head>
 <body>
-	<s:include value="/jsp/header.jsp"></s:include>
-	<s:include value="/jsp/search_list.jsp"></s:include>
-	<s:include value="/jsp/house_list.jsp"></s:include>
-	<s:include value="/jsp/footer.jsp"></s:include>
+	<s:include value="/header.jsp"></s:include>
+	<s:include value="/search_list.jsp"></s:include>
+	<s:include value="/house_list.jsp"></s:include>
+	<s:include value="/footer.jsp"></s:include>
 </body>
 </html>

@@ -55,7 +55,7 @@ function doLogin(type) {
 					<input type="button" name="loginButton" id="loginButton"  value="登录" onclick="doLogin();" />
 				</label>
 				<label class="ui-green">
-					<input type='button' value='注册' onclick='document.location="<%=path%>/jsp/register.jsp"'/>
+					<input type='button' value='注册' onclick='document.location="<%=path%>/register.jsp"'/>
 				</label>
 			</div>
 			<div style="display: inline">

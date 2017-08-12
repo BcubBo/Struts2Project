@@ -84,7 +84,7 @@ br{
 </style>
 
 <body>
-	<s:include value="/Struts2Project/jsp/header.jsp"></s:include>
+	<s:include value="/Struts2Project/header.jsp"></s:include>
 	<div id="regLogin" class="wrap">
 		<div class="dialog">
 			<dl class="clearfix">

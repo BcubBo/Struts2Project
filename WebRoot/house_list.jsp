@@ -62,5 +62,5 @@ request.setAttribute("path", path);
 		</table>
 	</s:div>
 	
-	<s:include value="/jsp/page.jsp"></s:include>
+	<s:include value="/page.jsp"></s:include>
 </div>
