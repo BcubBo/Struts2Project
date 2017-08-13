@@ -26,7 +26,7 @@ function doLogin(type) {
 				 if(data.user!=null){
 					 $("#msg").html(data.msg);	
 					 $("#msg").css("color","yellowgreen");	 
-					var html = "欢迎 &nbsp; ${sessionScope.LOGIN_USER.username}"+
+					var html = "欢迎 &nbsp; "+data.user.username+
 					"&nbsp;&nbsp;&nbsp;<label class='ui-green'>"+
 					"<input type='button' name='search' value='退   出'"+
 					" onclick='document.location=\"${pageContext.request.contextPath}/user\/logout.action\"'/>"+
@@ -68,7 +68,9 @@ function doLogin(type) {
 			</div>
 			<div style="display: inline">
 				<label class="ui-green">
-					<input type="button" name="search" value="发布信息" />
+					<input type="button" name="search" value="发布信息" 
+					onclick="document.location='add_house.jsp'"
+					/>
 				</label>	
 			</div>
 		</form>

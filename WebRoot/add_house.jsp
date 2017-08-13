@@ -84,7 +84,7 @@ br{
 </style>
 
 <body>
-	<s:include value="/Struts2Project/header.jsp"></s:include>
+	<s:include value="header.jsp"></s:include>
 	<div id="regLogin" class="wrap">
 		<div class="dialog">
 			<dl class="clearfix">
@@ -104,7 +104,12 @@ br{
 							<tr>
 								<td class="field">户　　型：</td>
 								<td>
-									<s:select list="typeList" name="house.houseType.id" listKey="id" listValue="name">
+									<s:select    
+										name="house.houseType.id"
+										list="typeList"
+										listKey="id"
+										listValue="name"
+									>
 									</s:select>
 								</td>
 							</tr>
@@ -132,10 +137,16 @@ br{
 								<td class="field">位　　置：</td>
 								<td >
 									<div class="nobr">
-										<s:doubleselect doubleList="streetMap.get(top.id)" list="disList" 
-											doubleName="house.street.id" name="districtId"
-											listKey="id" listValue="name" 
-											doubleListKey="id" doubleListValue="name"
+										<s:doubleselect 
+											name="districtId" 
+											list="disList"
+											listKey="id"
+											listValue="name" 
+											 
+											doubleName="house.street.id"
+											doubleList="streetMap.get(top.id)" 
+											doubleListKey="id" 
+											doubleListValue="name"
 											>
 							 
 					</s:doubleselect>
@@ -156,7 +167,7 @@ br{
 			 						<s:textfield name="upLoadFile.title" cssClass="text" ></s:textfield>
 			 					</td>
 			 				</tr>
-			 				<tr>
+			 				<%-- <tr>
 				 				<td class="field">已上传图片</td>
 				 				<td  style="text-align: center">
 				 					<img onerror="this.src='<%=path %>/imges/noimage.jpg'" width="90" height="60" alt="" src="<%=path %>/img/noimage.jpg"/>
@@ -171,7 +182,7 @@ br{
 	                        <tr>
 								<td class="field">详细信息：</td>
 								<td><s:textarea name="house.description"></s:textarea></td>
-							</tr>
+							</tr> --%>
 						</table>
 						<div class="buttons"><input type="submit"  value="立即发布" /></div>
 					</div>
