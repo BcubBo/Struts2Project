@@ -22,11 +22,17 @@ function doLogin(type) {
 				$("#loginButton").attr("disabled", true);
 			},
 			success: function(data) {
-				alert(data.msg);
+				//alert(data.msg);
 				 if(data.user!=null){
-					 $("#msg").html(data.msg+"&nbsp;<br>");		 
-					var html = "欢迎 &nbsp; "+data.user.username+"&nbsp;&nbsp;&nbsp;<label class='ui-green'><input type='button' name='search' value='退   出' onclick='document.location=\"user\/logout.action\"'/></label>";
+					 $("#msg").html(data.msg);	
+					 $("#msg").css("color","yellowgreen");	 
+					var html = "欢迎 &nbsp; "+${sessionScope.LOGIN_USER.username}+
+					"&nbsp;&nbsp;&nbsp;<label class='ui-green'>"+
+					"<input type='button' name='search' value='退   出'"+
+					" onclick='document.location=\"${pageContext.request.contextPath}/user\/logout.action\"'/>"+
+					"</label>";
 					$("#topLoginDiv").html(html);
+					//document.getElementById('topLoginDiv').innerHTML = html;
 				}else{
 					$("#msg").html(data.msg);
 					$("#msg").css("color","red");
@@ -68,3 +74,18 @@ function doLogin(type) {
 		</form>
 	</div>
 </div>
+<s:if test="#session.LOGIN_USER!=null">
+
+	<script type="text/javascript">
+
+		var html = "欢迎 &nbsp; "+${sessionScope.LOGIN_USER.username}+
+		"&nbsp;&nbsp;&nbsp;<label class='ui-green'>"+
+		"<input type='button' name='search' value='退   出'"+
+		" onclick='document.location=\"${pageContext.request.contextPath}/user\/logout.action\"'/>"+
+		"</label>";
+		document.getElementById('topLoginDiv').innerHTML = html;
+	</script>
+
+
+
+</s:if>

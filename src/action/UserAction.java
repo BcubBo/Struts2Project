@@ -107,7 +107,7 @@ public class UserAction extends BaseAction {
 					logger.debug("从结果映射中取出的user对象为:"+user.getUsername());
 					this.session.put(Constant.LOGIN_USER, user);
 					//父类的session拿到子类
-					msg="可以登录了，获取到了用户";
+					msg="登陆完成";
 					logger.debug("已经获取用户信息");
 				}else {
 					user = null;
