@@ -17,7 +17,7 @@ public class HouseAction extends BaseAction{
 
 	private static final long serialVersionUID = -1859199269850007425L;
 	private House house;
-	private List<HouseType> typelist;
+	private List<HouseType> typeList;
 	private int distritctId;
 	private List<District> disList;
 
@@ -43,6 +43,17 @@ public class HouseAction extends BaseAction{
 	 */
 	public String execute() {
 		
+		typeList = houseService.findTypeList();
+		//获取所有类型列表
+		disList = houseService.findDistrictList();
+		//获取所有区列表
+		for(District dis: disList) {
+			streetMap.put(dis.getId(),houseService.findStreetListByDisId(dis.getId()));
+			//将获得的街道列表和区域代码配对，并放入映射中
+			
+			
+		
+		}
 		
 		return SUCCESS;
 	}
@@ -98,13 +109,16 @@ public class HouseAction extends BaseAction{
 	}
 
 
-	public List<HouseType> getTypelist() {
-		return typelist;
+
+
+
+	public List<HouseType> getTypeList() {
+		return typeList;
 	}
 
 
-	public void setTypelist(List<HouseType> typelist) {
-		this.typelist = typelist;
+	public void setTypeList(List<HouseType> typeList) {
+		this.typeList = typeList;
 	}
 
 

@@ -69,7 +69,7 @@ function doLogin(type) {
 			<div style="display: inline">
 				<label class="ui-green">
 					<input type="button" name="search" value="发布信息" 
-					onclick="document.location='add_house.jsp'"
+					onclick="document.location='${pageContext.request.contextPath}/house/addHouse.action'"
 					/>
 				</label>	
 			</div>
