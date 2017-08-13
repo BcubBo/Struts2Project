@@ -5,6 +5,22 @@
 
 <struts>
  <package name="house" namespace="/house" extends="default">
+		<!-- 进入添加页面 -->
 		
+		<action name="addHouse" class="action.HouseAction">
+			
+			<result>/add_house.jsp</result>
+		
+		
+		</action>
+		
+		
+		<!-- 提交房屋页面 -->
+		<action name="doAddHouse" class="action.HouseAction" method="doAddHouse" >
+			
+			<result>/manage.jsp</result>
+		
+		
+		</action>
 </package>
 </struts>

@@ -167,7 +167,7 @@ br{
 			 						<s:textfield name="upLoadFile.title" cssClass="text" ></s:textfield>
 			 					</td>
 			 				</tr>
-			 				<%-- <tr>
+			 				<tr>
 				 				<td class="field">已上传图片</td>
 				 				<td  style="text-align: center">
 				 					<img onerror="this.src='<%=path %>/imges/noimage.jpg'" width="90" height="60" alt="" src="<%=path %>/img/noimage.jpg"/>
@@ -182,7 +182,7 @@ br{
 	                        <tr>
 								<td class="field">详细信息：</td>
 								<td><s:textarea name="house.description"></s:textarea></td>
-							</tr> --%>
+							</tr>
 						</table>
 						<div class="buttons"><input type="submit"  value="立即发布" /></div>
 					</div>
