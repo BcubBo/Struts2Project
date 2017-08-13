@@ -26,7 +26,7 @@ function doLogin(type) {
 				 if(data.user!=null){
 					 $("#msg").html(data.msg);	
 					 $("#msg").css("color","yellowgreen");	 
-					var html = "欢迎 &nbsp; "+${sessionScope.LOGIN_USER.username}+
+					var html = "欢迎 &nbsp; ${sessionScope.LOGIN_USER.username}"+
 					"&nbsp;&nbsp;&nbsp;<label class='ui-green'>"+
 					"<input type='button' name='search' value='退   出'"+
 					" onclick='document.location=\"${pageContext.request.contextPath}/user\/logout.action\"'/>"+
@@ -78,7 +78,7 @@ function doLogin(type) {
 
 	<script type="text/javascript">
 
-		var html = "欢迎 &nbsp; "+${sessionScope.LOGIN_USER.username}+
+		var html = "欢迎 &nbsp; ${sessionScope.LOGIN_USER.username}"+
 		"&nbsp;&nbsp;&nbsp;<label class='ui-green'>"+
 		"<input type='button' name='search' value='退   出'"+
 		" onclick='document.location=\"${pageContext.request.contextPath}/user\/logout.action\"'/>"+
