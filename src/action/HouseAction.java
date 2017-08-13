@@ -11,6 +11,8 @@ import entity.HouseType;
 import entity.Street;
 import service.IHouseService;
 import serviceIMPL.IHouseServiceImpl;
+import util.Constant;
+import util.UpLoadFile;
 
 
 public class HouseAction extends BaseAction{
@@ -18,7 +20,7 @@ public class HouseAction extends BaseAction{
 	private static final long serialVersionUID = -1859199269850007425L;
 	private House house;
 	private List<HouseType> typeList;
-	private int distritctId;
+	private int districtId;
 	private List<District> disList;
 
 	private int streetId;
@@ -29,7 +31,7 @@ public class HouseAction extends BaseAction{
 	private File img;
 	private String imgContentType;
 	private String imgFileName;
-	
+	private UpLoadFile uploadFile;
 	
 	
 	private IHouseService houseService = new IHouseServiceImpl();//房屋服务
@@ -43,6 +45,19 @@ public class HouseAction extends BaseAction{
 	 */
 	public String execute() {
 		
+		this.init();
+		
+		return SUCCESS;
+	}
+	//进入
+	/**
+	 * 初始化的操作，提供信息展示所需要的各种数据库中的列表
+	 * @author BcubBo
+	 * @return void 
+	 * 
+	 */
+	private void init() {
+		
 		typeList = houseService.findTypeList();
 		//获取所有类型列表
 		disList = houseService.findDistrictList();
@@ -55,16 +70,69 @@ public class HouseAction extends BaseAction{
 		
 		}
 		
-		return SUCCESS;
+		
 	}
-	//进入
-	
 	
 	/**提交完成后的跳转
 	 * @author BcubBo
 	 * @return
 	 */
 	public String doAddHouse() {
+		//完善房屋信息添加成功后的逻辑
+		this.init();
+		for(HouseType ht:typeList) {
+			
+			if(ht.getId()==house.getHouseType().getId()) {
+				
+				house.setHouseType(ht);
+				logger.debug(ht.getName());
+				break;
+				
+			}
+			
+			
+		}//遍历HoustType并按逻辑添加房屋类型到新添加的信息中
+		for(Street st:houseService.findStreetListByDisId(this.districtId)) {
+			
+			
+			if(st.getId() == streetId) {
+				
+				
+				logger.debug(st.getName());
+				house.setStreet(st);
+				break;
+			}
+			
+			
+		}
+		//遍历Street并按逻辑添加街道信息到新添加的房屋信息中
+		
+		for(District dis:disList) {
+			
+			if(dis.getId()== districtId) {
+				
+				logger.debug(dis.getName());
+				house.getStreet().setDistrict(dis);
+				break;
+				
+				
+			}
+			
+			
+			
+		}//遍历District并按逻辑添加区域信息到新添加的信息中
+		
+		house.getHouseType().getId();
+		uploadFile.setImgfile(img);
+		//设置图片文件
+		uploadFile.setFileName(imgFileName);
+		uploadFile.setContentType(imgContentType);
+		//
+		uploadFile.setPath(Constant.UPLOAD_PATH);
+		
+		houseService.save(house,uploadFile);
+		
+		
 		return SUCCESS;
 	}
 
@@ -94,6 +162,12 @@ public class HouseAction extends BaseAction{
 	
 	
 	
+	public UpLoadFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(UpLoadFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -122,14 +196,13 @@ public class HouseAction extends BaseAction{
 	}
 
 
-	public int getDistritctId() {
-		return distritctId;
+	public int getDistrictId() {
+		return districtId;
+	}
+	public void setDistrictId(int districtId) {
+		this.districtId = districtId;
 	}
 
-
-	public void setDistritctId(int distritctId) {
-		this.distritctId = distritctId;
-	}
 
 
 	public List<District> getDisList() {

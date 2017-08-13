@@ -92,7 +92,7 @@ br{
 				<dd class="past">填写房屋信</dd>
 			</dl>
 			<div class="box">
-				<s:form action="doAddHouse"  theme="simple"    name="addHouse" id="addHouse" onsubmit="return validate();" enctype="multipart/form-data" >
+				<s:form action="<%=path%>/house/doAddHouse.action"  theme="simple"    name="addHouse" id="addHouse" onsubmit="return validate();" enctype="multipart/form-data" >
 					<div class="infos">
 						<table class="field">
 							<tr>
@@ -170,7 +170,7 @@ br{
 			 				<tr>
 				 				<td class="field">已上传图片</td>
 				 				<td  style="text-align: center">
-				 					<img onerror="this.src='<%=path %>/imges/noimage.jpg'" width="90" height="60" alt="" src="<%=path %>/img/noimage.jpg"/>
+				 					<img onerror="this.src='<%=path %>/images/noimage.jpg'" width="90" height="60" alt="" src="<%=path %>/images/noimage.jpg"/>
 				 				</td>
 				 			</tr>
 				 			 <tr>

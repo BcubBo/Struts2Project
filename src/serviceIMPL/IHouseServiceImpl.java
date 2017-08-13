@@ -3,6 +3,9 @@ package serviceIMPL;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+
 import dao.IBaseDao;
 import daoIMPL.HouseDaoImpl;
 import entity.District;
@@ -19,7 +22,7 @@ import util.UpLoadFile;
  */
 public class IHouseServiceImpl implements IHouseService {
 
-	
+	private Logger logger = (Logger)LogManager.getLogger();
 	private IBaseDao<House> houseDao = new HouseDaoImpl();//数据访问层
 	
 	
@@ -119,12 +122,10 @@ public class IHouseServiceImpl implements IHouseService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	/**
-	 *@author BcubBo
-	 * 
-	 */
+
 	public List<HouseType> findTypeList() {
-		return  this.houseDao.findByHql("from HouseType ");
+		logger.debug("进入findTypeList()方法中");
+		return  this.houseDao.findByHql("from HouseType");
 		//获取类型列表
 		
 
@@ -133,15 +134,15 @@ public class IHouseServiceImpl implements IHouseService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<District> findDistrictList() {
-		
-		return this.houseDao.findByHql("form District");
+		logger.debug("进入findDistrictList()方法中");
+		return this.houseDao.findByHql("from District");
 		//获取地区列表
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Street> findStreetListByDisId(int disId) {
-		
+		logger.debug("进入findByHql()方法中");		
 		return this.houseDao.findByHql("from Street s where s.district.id="+disId);
 		//通过区域id获取街道列表
 	}

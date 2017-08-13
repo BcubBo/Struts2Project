@@ -171,7 +171,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		try {
 			logger.debug("进入查询语句前端");
 			Query queryObject = this.getSession().createQuery(hql);
-			
+			logger.debug(hql);
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find by HQL ", re);
