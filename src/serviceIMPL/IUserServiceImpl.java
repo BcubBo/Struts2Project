@@ -47,6 +47,9 @@ public class IUserServiceImpl implements IUserService{
 				resultMap.put("user", userResultList.get(0));//添加登陆用户信息
 				logger.debug("已添加完毕信息到返回集合中");
 				//
+			}else {
+				logger.debug("user对象不为空的前提下，返回结果为0的部分");
+				resultMap.put("loginResult", loginResult);
 			}
 		}else {
 			logger.debug("进入将loginResult放入map的操作");
