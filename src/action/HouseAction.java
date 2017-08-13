@@ -123,6 +123,7 @@ public class HouseAction extends BaseAction{
 		}//遍历District并按逻辑添加区域信息到新添加的信息中
 		
 		house.getHouseType().getId();
+		//上传文件的属性
 		uploadFile.setImgfile(img);
 		//设置图片文件
 		uploadFile.setFileName(imgFileName);

@@ -1,10 +1,13 @@
 package serviceIMPL;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.apache.struts2.ServletActionContext;
 
 import dao.IBaseDao;
 import daoIMPL.HouseDaoImpl;
@@ -14,6 +17,7 @@ import entity.HousePicture;
 import entity.HouseType;
 import entity.Street;
 import service.IHouseService;
+import util.Constant;
 import util.UpLoadFile;
 
 /**
@@ -76,7 +80,30 @@ public class IHouseServiceImpl implements IHouseService {
 	public boolean save(House house, UpLoadFile file) {
 		//保存对象到数据库中
 		try {
+			logger.debug("进入保存块");
+			String root = ServletActionContext.getServletContext().getRealPath(Constant.UPLOAD_PATH);
+			//获取项目的文件路径的绝对路径并把上传的文件放到此文件夹
+			String newFileName = root+"\\"+String.valueOf(System.currentTimeMillis()+file.getFileName());
+			//创建文件
+			//获取文件路径并设置文件名到项目文件夹
+			File destDir = new File(newFileName );
+			//目标文件
+			File parent = destDir.getParentFile();
+			if(!parent.exists()) {
+				
+				parent.mkdir();
+				logger.debug("目录不存在创建目录");
+				
+			}
+			logger.debug("开始上传文件:"+destDir.getAbsolutePath());
+			FileUtils.copyDirectory(file.getImgfile(),destDir);
+			HousePicture picture  = new HousePicture();
+			picture.setTitle(file.getTitle());
+			picture.setUrl(Constant.UPLOAD_PATH+"/"+newFileName);
+			//将上传的文件放置到项目的文件中
+			house.setPicture(picture  );
 			houseDao.save(house);//
+			logger.debug("上传完成:");
 			return true;
 			//处理上传文件的逻辑
 			
