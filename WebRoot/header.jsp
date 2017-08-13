@@ -7,11 +7,12 @@
 <script type="text/javascript">
 //登录
 function doLogin(type) {
- 	var name =  $('#loginName').attr('value');
-	var pw = $('#loginPassword').attr('value');
-	var url = 'login.action?user.username='+name+'&user.password='+pw; 
+ 	var name =  $('#loginName').val();//attr('value');
+	var pw = $('#loginPassword').val();//attr('value');
+	var url = 'user/login.action?user.username='+name+'&user.password='+pw; 
 	if (name != null && name!='' && pw != null && pw!='') {
-	
+		alert(name);
+		alert(pw);
 		$.ajax({
 			url: url,
 			type:"post",
@@ -47,7 +48,7 @@ function doLogin(type) {
 	</div>
 
 	<div align="right">
-		<form method="post" id="loginFrom" action="${pageContext.request.ContextPath }/user/login.action">
+		<form method="post" id="loginFrom" action="${pageContext.request.contextPath }/user/login.action">
 			<div id="topLoginDiv" style="display: inline">
 				用户名:&nbsp;<s:textfield name="user.name" id="loginName" required="true" size="15"/>
 				&nbsp;密&nbsp;&nbsp;码:&nbsp;<s:password name="user.password"  id="loginPassword" required="true" size="15"/>

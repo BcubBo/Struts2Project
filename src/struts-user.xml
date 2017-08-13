@@ -16,7 +16,7 @@
 			</result>
 		
 		</action>
-		<action name="login" class="action.UserAction">
+		<action name="login" class="action.UserAction" method="login">
 			<result type="json">
 				<param name="includeProperties">user.*</param>
 			</result>

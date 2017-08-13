@@ -34,17 +34,20 @@ public class IUserServiceImpl implements IUserService{
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		
 		boolean loginResult = false;
-		List<HouseUser> userResultList = userDao.findByHql("from HouseUser h where h.username='"+
-						user.getUsername()+
-						"' and h.password='"+user.getPassword()+"'");
-		logger.debug("用户返回列表的长度为:"+userResultList.size());
-		//
-		if(userResultList.size()==0) {
-			loginResult = true;
-			resultMap.put("loginResult",loginResult);//添加登陆结果
-			resultMap.put("user", userResultList.get(0));//添加登陆用户信息
-			logger.debug("已添加完毕信息到返回集合中");
+		List<HouseUser> userResultList =null;
+		if(user!=null) {
+			userResultList = userDao.findByHql("from HouseUser h where h.username='"+
+							user.getUsername()+
+							"' and h.password='"+user.getPassword()+"'");
+			logger.debug("用户返回列表的长度为:"+userResultList.size());
 			//
+			if(userResultList.size()==0) {
+				loginResult = true;
+				resultMap.put("loginResult",loginResult);//添加登陆结果
+				resultMap.put("user", userResultList.get(0));//添加登陆用户信息
+				logger.debug("已添加完毕信息到返回集合中");
+				//
+			}
 		}
 		
 		return resultMap;
