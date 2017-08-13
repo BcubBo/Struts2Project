@@ -5,13 +5,10 @@ import java.util.Map;
 import entity.HouseUser;
 import service.IUserService;
 import serviceIMPL.IUserServiceImpl;
+import util.Constant;
 
 public class UserAction extends BaseAction {
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1311557143195473990L;
 	
 	
@@ -20,7 +17,7 @@ public class UserAction extends BaseAction {
 	private boolean checkResult;//检查结果setter和getter然后直接返回了这个对象所以可以从中取得对象，且对象是以json格式返回
 	private String checkMsg;//检查失败后怎样
 	private String testString ;
-	
+	private String msg;
 
 	public String execute() {
 		logger.debug(user);
@@ -103,14 +100,17 @@ public class UserAction extends BaseAction {
 		if(resultMap!=null) {
 			logger.debug("结果映射不为空进入获取登陆结果区域");
 			if(resultMap.get("loginResult")!=null) {
+				
 				logger.debug("loginResult存在");
 				if((boolean)resultMap.get("loginResult")){
 					user = (HouseUser)resultMap.get("user");
-					
+					this.session.put(Constant.LOGIN_USER, user);
+					//父类的session拿到子类
 					logger.debug("已经获取用户信息");
 				}else {
 					user = null;
 					//不存在赋空
+					msg="用户名或者密码错误";
 					logger.debug("user为空");
 					testString="登陆验证失败";
 					
@@ -123,6 +123,19 @@ public class UserAction extends BaseAction {
 		}
 		return SUCCESS;
 }
+	////login登陆功能
+	
+	
+	/**
+	 * @return
+	 */
+	public String logout() {
+		logger.debug("清除Constant.LOGIN_USER之前的值为:"+session.get(Constant.LOGIN_USER));
+		this.session.remove(Constant.LOGIN_USER);
+		logger.debug("清除Constant.LOGIN_USER之后的值为:"+session.get(Constant.LOGIN_USER));
+		//清除session
+		return SUCCESS;
+	}
 	
 	
 	
@@ -137,9 +150,17 @@ public class UserAction extends BaseAction {
 	
 	
 	
-	
-	
-	
+
+	/**
+	 * @return
+	 */
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 
 	public String getTestString() {
 		return testString;

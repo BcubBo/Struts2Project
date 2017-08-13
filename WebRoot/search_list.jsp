@@ -27,7 +27,7 @@ br{
 <body>
 <div id="navbar" class="wrap">
 	<dl class="search clearfix">
-		<s:form method="get" action="house!findAll.action" id='findFrom'>
+		<s:form theme="simple" method="get" action="house!findAll.action" id='findFrom'>
 			<dt>
 				<ul>
 					<li class="bold">房屋信息</li>

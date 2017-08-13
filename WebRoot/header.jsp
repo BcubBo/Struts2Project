@@ -11,8 +11,8 @@ function doLogin(type) {
 	var pw = $('#loginPassword').val();//attr('value');
 	var url = 'user/login.action?user.username='+name+'&user.password='+pw; 
 	if (name != null && name!='' && pw != null && pw!='') {
-		alert(name);
-		alert(pw);
+		//alert(name);
+		//alert(pw);
 		$.ajax({
 			url: url,
 			type:"post",
@@ -24,7 +24,7 @@ function doLogin(type) {
 			success: function(data) {
 				 if(data.user!=null){
 					 $("#msg").html("&nbsp;<br>");		 
-					var html = "欢迎 &nbsp; "+data.user.username+"&nbsp;&nbsp;&nbsp;<label class='ui-green'><input type='button' name='search' value='退   出' onclick='document.location=\"logout.action\"'/></label>";
+					var html = "欢迎 &nbsp; "+data.user.username+"&nbsp;&nbsp;&nbsp;<label class='ui-green'><input type='button' name='search' value='退   出' onclick='document.location=\"user\/logout.action\"'/></label>";
 					$("#topLoginDiv").html(html);
 				}else{
 					$("#msg").html(data.msg);

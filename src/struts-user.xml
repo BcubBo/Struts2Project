@@ -18,8 +18,12 @@
 		</action>
 		<action name="login" class="action.UserAction" method="login">
 			<result type="json">
-				<param name="includeProperties">user.*,testString</param>
+				<param name="includeProperties">user.*,testString，msg</param>
 			</result>
+		</action>
+		<action name="logout" class="action.UserAction" method="logout"	>
+			
+			<result>/manage.jsp</result>
 		</action>
 </package>
  
