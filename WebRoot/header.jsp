@@ -22,6 +22,7 @@ function doLogin(type) {
 				$("#loginButton").attr("disabled", true);
 			},
 			success: function(data) {
+				alert(data.msg);
 				 if(data.user!=null){
 					 $("#msg").html("&nbsp;<br>");		 
 					var html = "欢迎 &nbsp; "+data.user.username+"&nbsp;&nbsp;&nbsp;<label class='ui-green'><input type='button' name='search' value='退   出' onclick='document.location=\"user\/logout.action\"'/></label>";

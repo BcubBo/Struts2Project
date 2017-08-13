@@ -22,8 +22,11 @@
 			</result>
 		</action>
 		<action name="logout" class="action.UserAction" method="logout"	>
-			
+<!-- 			<result type="json">
+				<param name="includeProperties">msg</param>
+			</result> -->
 			<result>/manage.jsp</result>
+			<result name="input">/manage.jsp</result>
 		</action>
 </package>
  

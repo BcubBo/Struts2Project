@@ -41,7 +41,7 @@ public class IUserServiceImpl implements IUserService{
 							"' and h.password='"+user.getPassword()+"'");
 			logger.debug("用户返回列表的长度为:"+userResultList.size());
 			//
-			if(userResultList.size()==0) {
+			if(userResultList.size()!=0) {
 				loginResult = true;
 				resultMap.put("loginResult",loginResult);//添加登陆结果
 				resultMap.put("user", userResultList.get(0));//添加登陆用户信息

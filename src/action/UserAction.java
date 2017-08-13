@@ -104,8 +104,10 @@ public class UserAction extends BaseAction {
 				logger.debug("loginResult存在");
 				if((boolean)resultMap.get("loginResult")){
 					user = (HouseUser)resultMap.get("user");
+					logger.debug("从结果映射中取出的user对象为:"+user.getUsername());
 					this.session.put(Constant.LOGIN_USER, user);
 					//父类的session拿到子类
+					msg="可以登录了，获取到了用户";
 					logger.debug("已经获取用户信息");
 				}else {
 					user = null;
@@ -130,10 +132,18 @@ public class UserAction extends BaseAction {
 	 * @return
 	 */
 	public String logout() {
-		logger.debug("清除Constant.LOGIN_USER之前的值为:"+session.get(Constant.LOGIN_USER));
-		this.session.remove(Constant.LOGIN_USER);
-		logger.debug("清除Constant.LOGIN_USER之后的值为:"+session.get(Constant.LOGIN_USER));
-		//清除session
+		if(session.get(Constant.LOGIN_USER)!=null) {
+			
+			logger.debug("清除Constant.LOGIN_USER之前的值为:"+((HouseUser)session.get(Constant.LOGIN_USER)).getUsername());
+			this.session.remove(Constant.LOGIN_USER);
+			logger.debug("清除Constant.LOGIN_USER之后的值为:"+session.get(Constant.LOGIN_USER));
+			//清除session
+		}else {
+			msg="请重新登陆";
+			return INPUT;
+			
+		}
+		//判断是否为空
 		return SUCCESS;
 	}
 	
