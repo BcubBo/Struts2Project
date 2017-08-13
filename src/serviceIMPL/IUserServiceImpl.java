@@ -48,6 +48,9 @@ public class IUserServiceImpl implements IUserService{
 				logger.debug("已添加完毕信息到返回集合中");
 				//
 			}
+		}else {
+			logger.debug("进入将loginResult放入map的操作");
+			resultMap.put("loginResult", loginResult);
 		}
 		
 		return resultMap;

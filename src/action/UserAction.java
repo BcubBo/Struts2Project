@@ -100,20 +100,28 @@ public class UserAction extends BaseAction {
 		logger.debug("进入登陆验证模块");
 		Map<String,Object> resultMap = userService.login(user);//
 		//接收结果映射
-		if((boolean)resultMap.get("loginResult")){
-			user = (HouseUser)resultMap.get("user");
-			
-			logger.debug("已经获取用户信息");
+		if(resultMap!=null) {
+			logger.debug("结果映射不为空进入获取登陆结果区域");
+			if(resultMap.get("loginResult")!=null) {
+				logger.debug("loginResult存在");
+				if((boolean)resultMap.get("loginResult")){
+					user = (HouseUser)resultMap.get("user");
+					
+					logger.debug("已经获取用户信息");
+				}else {
+					user = null;
+					//不存在赋空
+					logger.debug("user为空");
+					testString="登陆验证失败";
+					
+				}
+			}
 		}else {
 			
-			user = null;
-			//不存在赋空
 			
-			
+		
 		}
 		return SUCCESS;
-		
-
 }
 	
 	
