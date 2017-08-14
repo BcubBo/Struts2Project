@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import action.BaseAction;
+import util.Page;
 import entity.District;
 import entity.House;
 import entity.HouseType;
@@ -32,7 +33,7 @@ public class HouseAction extends BaseAction{
 	private String imgContentType;
 	private String imgFileName;
 	private UpLoadFile uploadFile;
-	
+	private Page page;
 	
 	private IHouseService houseService = new IHouseServiceImpl();//房屋服务
 	
@@ -121,10 +122,11 @@ public class HouseAction extends BaseAction{
 			
 			
 		}//遍历District并按逻辑添加区域信息到新添加的信息中
-		
+		uploadFile = new UpLoadFile();
 		house.getHouseType().getId();
 		//上传文件的属性
-		uploadFile.setImgfile(img);
+		logger.debug("IHouseServiceImpl里的上传文件路径:"+uploadFile+"\t"+img.getAbsolutePath());
+		uploadFile.setImgfile(img.getAbsoluteFile());
 		//设置图片文件
 		uploadFile.setFileName(imgFileName);
 		uploadFile.setContentType(imgContentType);
@@ -132,7 +134,7 @@ public class HouseAction extends BaseAction{
 		uploadFile.setPath(Constant.UPLOAD_PATH);
 		
 		houseService.save(house,uploadFile);
-		
+		logger.debug("IHouseServiceImpl里的文件:"+img.getAbsolutePath());
 		
 		return SUCCESS;
 	}
@@ -163,6 +165,12 @@ public class HouseAction extends BaseAction{
 	
 	
 	
+	public Page getPage() {
+		return page;
+	}
+	public void setPage(Page page) {
+		this.page = page;
+	}
 	public UpLoadFile getUploadFile() {
 		return uploadFile;
 	}

@@ -39,10 +39,10 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		try {
 			getSession().save(instance);
 			tx.commit();
-			log.debug("save successful");
+			logger.debug("save successful");
 		} catch (RuntimeException re) {
 			tx.rollback();
-			log.error("save failed", re);
+			logger.error("save failed", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -51,14 +51,14 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	@Override
 	public void delete(T instance) {
-		log.debug("deleting "+instance+" instance");
+		logger.debug("deleting "+instance+" instance");
 		Transaction tx = this.getSession().beginTransaction();
 		try {
 			getSession().delete(instance);
 			tx.commit();
-			log.debug("delete successful");
+			logger.debug("delete successful");
 		} catch (RuntimeException re) {
-			log.error("delete failed", re);
+			logger.error("delete failed", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -67,15 +67,15 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	
 	@Override
 	public void update(T instance) {
-		log.debug("updating "+instance+" instance");
+		logger.debug("updating "+instance+" instance");
 		Transaction tx = this.getSession().beginTransaction();
 		try {
 			getSession().update(instance);
 			tx.commit();
-			log.debug("update successful");
+			logger.debug("update successful");
 		} catch (RuntimeException re) {
 			tx.rollback();
-			log.error("update failed", re);
+			logger.error("update failed", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -85,13 +85,13 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Object findById(Class clazz, Integer id) {
-		log.debug("getting "+clazz+" instance with id: " + id);
+		logger.debug("getting "+clazz+" instance with id: " + id);
 		try {
 			//Hibernate.initialize(District.class);
 			Object o = this.getSession().get(clazz,id);
 			return o;
 		} catch (RuntimeException re) {
-			log.error("get failed", re);
+			logger.error("get failed", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -101,14 +101,14 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		log.debug("getting "+entityClass+" List All ");
+		logger.debug("getting "+entityClass+" List All ");
 		try {
 			String hql = "FROM "+entityClass;
 			Query queryObject = this.getSession().createQuery(hql);
 			
 			return queryObject.list();
 		} catch (RuntimeException re) {
-			log.error("find by HQL ", re);
+			logger.error("find by HQL ", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -118,7 +118,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List findAll(Class clazz) {
-		log.debug("getting "+clazz+" List All ");
+		logger.debug("getting "+clazz+" List All ");
 		try {
 			String c = clazz.toString();
 			String hql = "FROM "+c.substring(c.lastIndexOf(".")+1,c.length());
@@ -126,7 +126,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 			
 			return queryObject.list();
 		} catch (RuntimeException re) {
-			log.error("find by HQL ", re);
+			logger.error("find by HQL ", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -142,7 +142,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> findByProperty(String className,String propertyName, Object value) {
-		log.debug("finding "+className+" instance with property: " + propertyName + ", value: " + value);
+		logger.debug("finding "+className+" instance with property: " + propertyName + ", value: " + value);
 		
 		try {
 			String hql = "FROM "+className+" as o WHERE o."+propertyName+" = ?";
@@ -151,7 +151,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 			
 			return queryObject.list();
 		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
+			logger.error("find by property name failed", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -165,7 +165,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	 */
 	@SuppressWarnings("rawtypes")
 	public List findByHql(String hql) {
-		log.debug(hql);
+		logger.debug(hql);
 		logger.debug(hql);
 		
 		try {
@@ -174,7 +174,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 			logger.debug(hql);
 			return queryObject.list();
 		} catch (RuntimeException re) {
-			log.error("find by HQL ", re);
+			logger.error("find by HQL ", re);
 			throw re;
 		} finally{
 			closeSession();
@@ -190,7 +190,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object[] findPageByHql(final String hql, String hqlCount, final int page, final int pageSize) {
-		log.debug(hql);
+		logger.debug(hql);
 		List list = new ArrayList();
 		Long total = new Long(0);
 		Integer totalPage = 0;
@@ -226,7 +226,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Page findPageByHql(final String hql, String hqlCount, Page page) {
-		log.debug(hql);
+		logger.debug(hql);
 		try {
 			if(page !=null){
 				//1、根据hql语句查询指定数据

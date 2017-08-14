@@ -96,12 +96,13 @@ public class IHouseServiceImpl implements IHouseService {
 				
 			}
 			logger.debug("开始上传文件:"+destDir.getAbsolutePath());
-			FileUtils.copyDirectory(file.getImgfile(),destDir);
+			logger.debug("获取文件对象"+file.getImgfile());
+/*			FileUtils.copyDirectory(file.getImgfile(),destDir);
 			HousePicture picture  = new HousePicture();
 			picture.setTitle(file.getTitle());
 			picture.setUrl(Constant.UPLOAD_PATH+"/"+newFileName);
 			//将上传的文件放置到项目的文件中
-			house.setPicture(picture  );
+			house.setPicture(picture  );*/
 			houseDao.save(house);//
 			logger.debug("上传完成:");
 			return true;

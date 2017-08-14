@@ -92,7 +92,7 @@ br{
 				<dd class="past">填写房屋信</dd>
 			</dl>
 			<div class="box">
-				<s:form action="<%=path%>/house/doAddHouse.action"  theme="simple"    name="addHouse" id="addHouse" onsubmit="return validate();" enctype="multipart/form-data" >
+				<s:form action="%{path}/house/doAddHouse.action"  theme="simple"    name="addHouse" id="addHouse" onsubmit="return validate();" enctype="multipart/form-data" >
 					<div class="infos">
 						<table class="field">
 							<tr>
