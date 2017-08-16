@@ -8,7 +8,7 @@
 </head>
 <body>
 欢迎
-<form action="/house/jump.action"><input type="submit" value="跳转到租房"/></form>
+<form action="${pageContext.request.contextPath }/house/jump.action" method="post"><input type="submit" value="跳转到租房"/></form>
 
 </body>
 </html>
