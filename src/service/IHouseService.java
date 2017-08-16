@@ -2,7 +2,7 @@ package service;
 import java.util.List;
 import java.util.Map;
 
-import util.Page;
+import dao.Page;
 import entity.District;
 import entity.House;
 import entity.HousePicture;
@@ -46,7 +46,7 @@ public interface IHouseService {
 	 * 查询所有房屋列表
 	 * @param params
 	 */
-	public Page findAll(Map<String,Object> params);
+	public Object[] findAll(Map<String,Object> params);
 	
 	/**
 	 * 查询所有房屋类型列表
