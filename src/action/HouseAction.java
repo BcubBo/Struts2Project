@@ -63,6 +63,12 @@ public class HouseAction extends BaseAction{
 		
 		return SUCCESS;
 	}
+	public String jump() {
+		
+		this.init();
+		
+		return SUCCESS;
+	}
 	//进入
 	/**
 	 * 初始化的操作，提供信息展示所需要的各种数据库中的列表

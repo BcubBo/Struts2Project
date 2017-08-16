@@ -32,6 +32,11 @@
 		
 			<result>/manage.jsp</result>
 		</action>
+		<action name="jump" class="action.HouseAction" method="jump">
+		
+			<result>/manage.jsp</result>
+		
+		</action>
 		
 		
 		

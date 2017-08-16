@@ -51,6 +51,7 @@ public class CharSetFilter extends AbstractInterceptor implements Filter {
 /*		chain.doFilter(request, response);*/
 		Logger logger = (Logger)LogManager.getLogger();
 		logger.debug("字符过滤器启动");
+		new action.HouseAction().execute();
 		request.setCharacterEncoding("utf8");
 		response.setCharacterEncoding("utf8");
 		chain.doFilter(request, response);
