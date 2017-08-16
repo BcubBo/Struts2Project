@@ -6,6 +6,7 @@ String path = request.getContextPath();
 //out.print(path);
 request.setAttribute("path", path);
 %>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="main wrap">
 	<s:div id="houseArea">
 		<table class="house-list">
@@ -24,7 +25,7 @@ request.setAttribute("path", path);
 							<s:if test='picture.url!=null && picture.url !=""'>
 								<img src='<%=path%><s:property value="picture.url"/>' width="90" height="60" />
 							</s:if><s:else>
-								<img src="Struts2Project/images/thumb_house.gif" />
+								<img src="../images/thumb_house.gif" />
 							</s:else>
 						</s:a>
 					</span>

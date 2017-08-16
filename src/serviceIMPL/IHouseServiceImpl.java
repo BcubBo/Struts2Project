@@ -143,8 +143,10 @@ public class IHouseServiceImpl implements IHouseService {
 		return null;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public Object[] findAll(Map<String, Object> params) {
+	public Page findAll(Map<String, Object> params) {
+		
 		StringBuilder hql = new StringBuilder();
 		hql.append("from House h where 1=1");
 		House house = (House)params.get("house");
@@ -184,9 +186,12 @@ public class IHouseServiceImpl implements IHouseService {
 
 		obj.add(page);
 //		obj.add(totalCount);
-		List result = this.houseDao.findByHql(hql.toString());
-		page.setList(result);
-		return obj.toArray();
+//		List result = this.houseDao.findByHql(hql.toString());
+/*		List result = */
+		page = this.houseDao.findPageByHql(hql.toString(),("select count(1)"+hql.toString()),page);
+/*		page.setList(result);
+		return obj.toArray();*/
+		return page;
 	}
 
 	

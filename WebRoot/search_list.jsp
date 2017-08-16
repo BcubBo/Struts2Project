@@ -64,8 +64,8 @@ br{
 				<ul>
 					<li class="first">房型</li>
 					<li>
-						<%-- <s:select list="typeList" name="house.typeId" listKey="id" listValue="name" headerKey="" headerValue="不限">
-						</s:select> --%>
+						<s:select list="typeList" name="house.typeId" listKey="id" listValue="name" headerKey="" headerValue="不限">
+						</s:select>
 					</li>
 				</ul>
 			</dd>

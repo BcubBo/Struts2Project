@@ -1,5 +1,6 @@
 package action;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +106,12 @@ public class HouseAction extends BaseAction{
 	 * @return
 	 */
 	public String findAll() {
-		
+			this.init();
+/*		try {
+			house.setTitle(new String(house.getTitle().getBytes("ios8859-1"),"utf-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}*/
 		Map<String,Object> params = new HashMap<String,Object>();
 		
 		params.put("house",house);
@@ -117,9 +123,9 @@ public class HouseAction extends BaseAction{
 			
 			page = new Page();
 		}
+		
+		this.page = houseService.findAll(params);
 		params.put("page", page);
-		Object[] obj = houseService.findAll(params);
-		this.page = (Page)obj[0];
 		return SUCCESS;
 		
 		
