@@ -28,7 +28,10 @@
 			<result>/manage.jsp</result>
 		
 		</action>
-		<action name="findAll" class="action.HouseAction" method="findAll"></action>
+		<action name="findAll" class="action.HouseAction" method="findAll">
+		
+			<result>/manage.jsp</result>
+		</action>
 		
 		
 		

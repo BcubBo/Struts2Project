@@ -11,7 +11,7 @@ import org.apache.logging.log4j.core.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import dao.IBaseDao;
-import dao.Page;
+import util.Page;
 import daoIMPL.HouseDaoImpl;
 import entity.District;
 import entity.House;
@@ -154,16 +154,20 @@ public class IHouseServiceImpl implements IHouseService {
 		
 		Page page = (Page)params.get("page");
 		if(house!=null && house.getTitle()!=null) {
+			hql.append(" and h.title like '%"+house.getTitle()+"%'");
+		}
+			
+		if(price!=null && price.trim().length()>0) {
 			String[] temp = price.split(",");
 			if(temp.length>1) {
 				
 				StringBuilder ss = new StringBuilder();
 				for(String s:temp) {
 					
-					ss.append(s);
+					hql.append(" and h.price "+s.toString());
 					
 				}
-				hql.append("and h.price ="+ss.toString());
+				
 				
 			}else {
 				
@@ -171,9 +175,10 @@ public class IHouseServiceImpl implements IHouseService {
 				hql.append(" and h.price "+price);
 				//
 			}
-			///
-			hql.append(" and h.title like '%"+house.getTitle()+"%'");
 		}
+			///
+			
+		
 		List obj = new ArrayList();
 		
 

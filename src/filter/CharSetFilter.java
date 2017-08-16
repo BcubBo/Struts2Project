@@ -1,0 +1,60 @@
+package filter;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+
+/**
+ * Servlet Filter implementation class CharSetFilter
+ */
+@WebFilter("/CharSetFilter")
+public class CharSetFilter implements Filter {
+
+    /**
+     * Default constructor. 
+     */
+    public CharSetFilter() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Filter#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 */
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		// place your code here
+
+		// pass the request along the filter chain
+/*		chain.doFilter(request, response);*/
+		Logger logger = (Logger)LogManager.getLogger();
+		logger.debug("字符过滤器启动");
+		request.setCharacterEncoding("utf8");
+		response.setCharacterEncoding("utf8");
+		chain.doFilter(request, response);
+		logger.debug("字符过滤器链启动结束");
+		
+	}
+
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
+	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+}
