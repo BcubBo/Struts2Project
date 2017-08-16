@@ -16,6 +16,7 @@ import util.Constant;
 import util.UpLoadFile;
 
 
+
 public class HouseAction extends BaseAction{
 
 	private static final long serialVersionUID = -1859199269850007425L;
@@ -33,9 +34,20 @@ public class HouseAction extends BaseAction{
 	private String imgContentType;
 	private String imgFileName;
 	private UpLoadFile uploadFile;
-	private Page page;
+
 	
 	private IHouseService houseService = new IHouseServiceImpl();//房屋服务
+	
+	
+	//检索所需属性
+	
+	private String price;
+	
+	private String floorage;
+	
+	
+	private Page page;
+	
 	
 	
 	//默认的格式书写
@@ -70,6 +82,45 @@ public class HouseAction extends BaseAction{
 			
 		
 		}
+		
+		
+	}
+	
+	/**搜索方法
+	 * @author BcubBo
+	 * @return
+	 */
+	public String search() {
+		
+		
+		return execute();
+		
+	}
+	
+	
+	
+	/**
+	 * 执行搜索的方法
+	 * @author BcubBo
+	 * @return
+	 */
+	public String findAll() {
+		
+		Map<String,Object> params = new HashMap<String,Object>();
+		
+		params.put("house",house);
+		params.put("price",price);
+		params.put("districtId",floorage);
+		params.put("streetId",streetId);
+		if(page == null) {
+			
+			
+			page = new Page();
+		}
+		params.put("page", page);
+		Object[] obj = houseService.findAll(params);
+		this.page = (Page)obj[0];
+		return SUCCESS;
 		
 		
 	}
@@ -165,6 +216,24 @@ public class HouseAction extends BaseAction{
 	
 	
 	
+	public IHouseService getHouseService() {
+		return houseService;
+	}
+	public void setHouseService(IHouseService houseService) {
+		this.houseService = houseService;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getFloorage() {
+		return floorage;
+	}
+	public void setFloorage(String floorage) {
+		this.floorage = floorage;
+	}
 	public Page getPage() {
 		return page;
 	}

@@ -54,9 +54,9 @@ br{
 				<ul>
 					<li class="first">房屋位置</li>
 					<li>
-						<%-- <s:doubleselect list="disList" listKey="id" listValue="name" headerKey="" headerValue="不限" name="districtId" doubleList="streetMap.get(top.id)" doubleListKey="id" doubleListValue="name" doubleName="house.streetId" doubleHeaderKey="" doubleHeaderValue="不限">
+						<s:doubleselect list="disList" listKey="id" listValue="name" headerKey="" headerValue="不限" name="districtId" doubleList="streetMap.get(top.id)" doubleListKey="id" doubleListValue="name" doubleName="house.streetId" doubleHeaderKey="" doubleHeaderValue="不限">
 								 
-						</s:doubleselect> --%>
+						</s:doubleselect>
 					</li>
 				</ul>
 			</dd>

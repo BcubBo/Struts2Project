@@ -1,6 +1,7 @@
 package serviceIMPL;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.core.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import dao.IBaseDao;
+import dao.Page;
 import daoIMPL.HouseDaoImpl;
 import entity.District;
 import entity.House;
@@ -143,8 +145,43 @@ public class IHouseServiceImpl implements IHouseService {
 
 	@Override
 	public Object[] findAll(Map<String, Object> params) {
+		StringBuilder hql = new StringBuilder();
+		hql.append("from House h where 1=1");
+		House house = (House)params.get("house");
+		String price = (String)params.get("price");
+		String floorage = (String)params.get("floorage");
+		int streetId = (Integer)params.get("streetId");
 		
-		return null;
+		Page page = (Page)params.get("page");
+		if(house!=null && house.getTitle()!=null) {
+			String[] temp = price.split(",");
+			if(temp.length>1) {
+				
+				StringBuilder ss = new StringBuilder();
+				for(String s:temp) {
+					
+					ss.append(s);
+					
+				}
+				hql.append("and h.price ="+ss.toString());
+				
+			}else {
+				
+				
+				hql.append(" and h.price "+price);
+				//
+			}
+			///
+			hql.append(" and h.title like '%"+house.getTitle()+"%'");
+		}
+		List obj = new ArrayList();
+		
+
+		obj.add(page);
+//		obj.add(totalCount);
+		List result = this.houseDao.findByHql(hql.toString());
+		page.setList(result);
+		return obj.toArray();
 	}
 
 	

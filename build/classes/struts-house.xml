@@ -22,5 +22,17 @@
 		
 		
 		</action>
+		<!-- 进入搜索页面 -->
+		<action name="search" class="action.HouseAction" method="search">
+		
+			<result>/manage.jsp</result>
+		
+		</action>
+		<action name="findAll" class="action.HouseAction" method="findAll"></action>
+		
+		
+		
+		
+		<!-- 执行搜索页面 -->
 </package>
 </struts>
