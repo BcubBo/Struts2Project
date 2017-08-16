@@ -14,7 +14,9 @@
 	<constant name="struts.multipart.maxSize" value="5000000"/>
 	<package name="default" namespace="/" extends="json-default">
 		<interceptors>
+			<interceptor name="charset" class="filter.CharSetFilter"></interceptor>
 			<interceptor-stack name="myinterceptorstack">
+				<interceptor-ref name="charset"></interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>

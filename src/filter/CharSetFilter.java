@@ -12,13 +12,21 @@ import javax.servlet.annotation.WebFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+
 /**
  * Servlet Filter implementation class CharSetFilter
  */
 @WebFilter("/CharSetFilter")
-public class CharSetFilter implements Filter {
+public class CharSetFilter extends AbstractInterceptor implements Filter {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6150196516337263499L;
+
+	/**
      * Default constructor. 
      */
     public CharSetFilter() {
@@ -55,6 +63,13 @@ public class CharSetFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String intercept(ActionInvocation invocation) throws Exception {
+		String result = invocation.invoke();
+		// TODO Auto-generated method stub
+		return result;
 	}
 
 }
